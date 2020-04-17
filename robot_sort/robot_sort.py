@@ -96,8 +96,41 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        # know Robot has None, swap with first item in list:
+        self.swap_item()
+        # as long as Robot can move right (True), iterate through list:
+        while self.can_move_right() is True:
+            # if item Robot has is smaller, swap:
+            if self.compare_item() == -1:
+                self.swap_item()
+            else:
+                # keep moving right:
+                self.move_right()
+        # as long as Robot can move left (True), iterate back through list:
+        while self.can_move_left() is True:
+            # if item Robot has is larger, swap:
+            if self.compare_item() == 1:
+                self.swap_item()
+            else:
+                # keep moving left:
+                self.move_left()
+
+'''
+PLAN:
+1. Robot starts at beginning of list.
+2. Robot starts with nothing.
+    - pick up first item in list (i[0] of list becomes None) -- turn light on?
+3. As long as the Robot can move right:
+    - if the item its holding is smaller than the item in front of it, swap.
+    - if the item its holding is the same or smaller, keep moving right.
+4. If the Robot can't move right anymore, it will begin moving left.
+5. As long as the Robot can move left:
+    - if the item its holding is larger than the item in front of it, swap.
+    - if the item its holding is the same or smaller, keep moving left.
+6. Robot keeps moving right to left until no more swaps.
+    - if can't move to left (at beginning of list), swap with None -- turn light off?
+7. List should be sorted.
+'''
 
 
 if __name__ == "__main__":
